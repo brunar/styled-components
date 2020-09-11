@@ -19,6 +19,7 @@ const App = () => {
       <h1>App</h1>
       <Button>Primary Button</Button>
       <Button secondary>Secondary Button</Button>
+      <Button large>Large Button</Button>
       <Button disabled>Disabled Button</Button>
     </>
   );
