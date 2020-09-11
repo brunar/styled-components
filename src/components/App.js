@@ -17,7 +17,9 @@ const App = () => {
     <>
       <GlobalStyle />
       <h1>App</h1>
-      <Button>Test</Button>
+      <Button>Primary Button</Button>
+      <Button secondary>Secondary Button</Button>
+      <Button disabled>Disabled Button</Button>
     </>
   );
 }
