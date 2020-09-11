@@ -1,9 +1,11 @@
 import React from 'react';
+import {PageLayout} from '../common';
 
 export default function Login() {
     return (
-        <div>
+        <PageLayout>
             Login
-        </div>
+            
+        </PageLayout>
     );
 }
