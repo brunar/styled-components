@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { PageLayout, Input, PasswordInput } from '../common';
+import { PageLayout, Input, PasswordInput, Button } from '../common';
 
 
 const Form = styled.form`
@@ -12,11 +12,19 @@ const Form = styled.form`
     box-sizing:border-box;
     color:black;
     border-radius:4px;
+
+    .alt-text {
+        text-align:center;
+        margin: 10px 0;
+    }
 `;
+
+let timeout;
 
 export default function Login() {
 
     const [formFields, setFormFields] = useState({ username: '', password: '' });
+    const [loading, setLoading] = useState(false);
 
     function handleInputChange(e) {
         e.persist();
@@ -26,10 +34,26 @@ export default function Login() {
         }))
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        setLoading(true);
+        timeout = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }
+
+    useEffect(() => {
+        return () => {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+        }
+    }, [])
+
     return (
         <PageLayout>
             <h1>Login</h1>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Input
                     value={formFields.username}
                     onChange={handleInputChange}
@@ -40,6 +64,17 @@ export default function Login() {
                     value={formFields.password}
                     onChange={handleInputChange}
                     name="password" />
+
+                <Button large type="submit" disabled={loading}>
+                    {loading ? 'Loading...' : 'Login'}
+                </Button>
+
+                {!loading &&
+                    <>
+                        <div className="alt-text">or</div>
+                        <Button secondary type="button">Register</Button>
+                    </>
+                }
             </Form>
         </PageLayout>
     );
