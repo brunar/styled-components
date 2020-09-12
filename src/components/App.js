@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Login from '../components/pages/Login';
 import Home from '../components/pages/Home';
 
@@ -13,10 +13,15 @@ const GlobalStyle = createGlobalStyle`
     font-family:'Kaushan Script'
   }
 `;
+//Theme add variables
+const theme = {
+  primaryColor: '#f8049c',
+  secondaryColor: '#fdd54f',
+};
 
 const App = () => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
 
       <BrowserRouter>
@@ -29,7 +34,7 @@ const App = () => {
           </Route>
         </Switch>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 }
 
