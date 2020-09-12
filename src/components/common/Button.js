@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const LargeStyles = ({ large }) => {
     if (large) {
@@ -32,6 +33,11 @@ ${LargeStyles};
         background:#eee;
     }
 `;
+
+Button.propTypes = {
+    large: PropTypes.bool,
+    secondary: PropTypes.bool
+}
 
 export { Button };
 //export default Button;
