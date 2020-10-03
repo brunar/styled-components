@@ -28,7 +28,7 @@ const App = () => {
     }}>
       <GlobalStyle />
 
-      <BrowserRouter>
+      <BrowserRouter basename="/view/styled-components">
         <Switch>
           <Route path="/login">
             <Login />
